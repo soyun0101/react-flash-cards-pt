@@ -33,7 +33,7 @@ class App extends React.Component{
 
         switch(currentView){
             case 'create-card':
-                return <CreateCard addCard={this.addCard} />;
+                return <CreateCard addCard={this.addCard} setView={this.setView}/>;
             case 'review-card':
                 return <ReviewCards />;
             case 'view-cards':
@@ -46,20 +46,20 @@ class App extends React.Component{
     saveCards(){
         const stringedCards = JSON.stringify(this.state.cards);
         const storeCards = window.localStorage;
-        storeCards.setItem({flashCards: stringedCards});
+        storeCards.setItem('flashCards', stringedCards);
     }
 
     addCard(cardObject){
-        console.log('cardobject is: ', cardObject);
+      
         const cardsArray = this.state.cards.slice();
-        const newSetCards = cardsArray.push(cardObject);
-        console.log(cardsArray);
-        console.log('in addCard: ', newSetCards);
+        cardsArray.push(cardObject);
+       
         this.setState({
             cards: cardsArray
-        });
-        this.saveCards();
+        }, this.saveCards);
+      
     }
+
 
     render(){
         console.log('Cards From App: ', this.state.cards);

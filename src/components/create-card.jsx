@@ -12,13 +12,12 @@ class CreateCard extends React.Component{
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     handleChange(e){
 
         const target= e.target;
-
-        console.log(target.value);
 
         if(target.name === 'question'){
             this.setState({
@@ -39,12 +38,23 @@ class CreateCard extends React.Component{
             question: this.state.question,
             answer: this.state.answer
         });
+
+        return this.reset();
+    }
+
+    reset(){
+
+        this.props.setView('view-cards');
+
+        return this.setState({
+            question: '',
+            answer: ''
+        });
+
     }
 
     render(){
 
-        console.log('q: ', this.state.question);
-        console.log('a: ', this.state.answer);
         return <form onSubmit={this.handleSubmit}>
         <h1>Create New Card</h1>
         <label htmlFor="question">
@@ -59,12 +69,10 @@ class CreateCard extends React.Component{
                 <textarea onChange={this.handleChange} name="answer" id="answer" cols="70" rows="2"></textarea>
             </div>   
         </label>
-        <button>Cancel</button>
+        <button type='reset' onClick={this.reset}>Cancel</button>
         <button type="submit">Save Card</button>
     </form>
     }
-
-
 
 
 }
