@@ -2,7 +2,7 @@ import React from 'react';
 
 function Nav(props){
     return (
-        <nav>
+        <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
         <ul className="nav nav-pills">
             <li className="nav-item">
                 <span onClick={() => props.setView('view-cards')} className="nav-link">View Cards</span>

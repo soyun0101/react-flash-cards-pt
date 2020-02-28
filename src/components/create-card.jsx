@@ -55,22 +55,23 @@ class CreateCard extends React.Component{
 
     render(){
 
-        return <form onSubmit={this.handleSubmit}>
-        <h1>Create New Card</h1>
-        <label htmlFor="question">
-            Question:
-            <div>
-                <textarea onChange={this.handleChange} name="question" id="question" cols="70" rows="2"></textarea>
-            </div>    
-        </label>
-        <label htmlFor="answer">
-            Answer:
-            <div>
-                <textarea onChange={this.handleChange} name="answer" id="answer" cols="70" rows="2"></textarea>
-            </div>   
-        </label>
-        <button type='reset' onClick={this.reset}>Cancel</button>
-        <button type="submit">Save Card</button>
+        return <form className="container" onSubmit={this.handleSubmit}>
+        <h1 className="mb-5">Create New Card</h1>
+    
+        <div class="input-group mb-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Question</span>
+            </div>
+            <textarea className="form-control" aria-label="With textarea" onChange={this.handleChange} name="question" id="question"></textarea>
+            </div>
+            <div class="input-group mb-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Answer</span>
+            </div>
+            <textarea className="form-control" aria-label="With textarea" onChange={this.handleChange} name="answer" id="answer"></textarea>
+            </div>
+        <button className="btn btn-outline-danger float-right" type="reset" onClick={this.reset}>Cancel</button>
+        <button className="btn btn-outline-success float-right mr-2" type="submit">Save Card</button>
     </form>
     }
 
