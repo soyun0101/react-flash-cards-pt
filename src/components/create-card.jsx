@@ -56,17 +56,17 @@ class CreateCard extends React.Component{
     render(){
 
         return <form className="container" onSubmit={this.handleSubmit}>
-        <h1 className="mb-5">Create New Card</h1>
+        <h1 className="text-center mt-2 mb-5">Create New Card</h1>
     
-        <div class="input-group mb-5">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Question</span>
+        <div className="input-group mb-5">
+            <div className="input-group-prepend">
+                <span className="input-group-text">Question</span>
             </div>
             <textarea className="form-control" aria-label="With textarea" onChange={this.handleChange} name="question" id="question"></textarea>
             </div>
-            <div class="input-group mb-5">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Answer</span>
+            <div className="input-group mb-5">
+            <div className="input-group-prepend">
+                <span className="input-group-text">Answer</span>
             </div>
             <textarea className="form-control" aria-label="With textarea" onChange={this.handleChange} name="answer" id="answer"></textarea>
             </div>
