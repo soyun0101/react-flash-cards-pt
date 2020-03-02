@@ -46,7 +46,10 @@ class ReviewCards extends React.Component{
 
     
     nextCard(){
-        this.state.isToggled = false;
+
+        this.setState({
+            isToggled: false
+        });
 
         const currentIndex = this.props.activeCard.index;
         
@@ -65,7 +68,10 @@ class ReviewCards extends React.Component{
     }
 
     previousCard(){
-        this.state.isToggled = false;
+        
+        this.setState({
+            isToggled: false
+        });
         
         const currentIndex = this.props.activeCard.index;
         

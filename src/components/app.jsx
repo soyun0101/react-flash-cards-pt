@@ -64,7 +64,7 @@ class App extends React.Component{
 
     setActiveCard(index){
        
-        if(typeof this.state.cards[0] !== 'undefined'){
+        if(typeof this.state.cards[index] !== 'undefined'){
             const currentCards = this.state.cards.slice();
             let activeCard = currentCards[index];
             
