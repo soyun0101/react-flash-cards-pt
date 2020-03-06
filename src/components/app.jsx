@@ -5,6 +5,7 @@ import ReviewCards from './review-cards';
 import CreateCard from './create-card';
 import Nav from './nav';
 
+
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -20,6 +21,11 @@ class App extends React.Component{
         this.saveCards = this.saveCards.bind(this);
         this.addCard = this.addCard.bind(this);
         this.setActiveCard = this.setActiveCard.bind(this);
+        this.deleteCard = this.deleteCard.bind(this);
+    }
+
+    componentDidMount() {
+        this.getCards();
     }
 
     setView(changeView){
@@ -27,6 +33,21 @@ class App extends React.Component{
         return this.setState({
             view: changeView
         })
+    }
+
+    deleteCard(){
+       
+        const card = this.state.activeCard;
+
+        if(card) {
+           
+            let newCardsArray = this.state.cards.slice();
+            newCardsArray.splice(card.index, 1);
+            this.setState({
+                cards: newCardsArray
+            });
+        }
+        
     }
 
     getView(){
@@ -39,9 +60,19 @@ class App extends React.Component{
             case 'review-card':
                 return <ReviewCards activeCard={this.state.activeCard} cards={this.state.cards} setActiveCard={this.setActiveCard}/>;
             case 'view-cards':
-                return <ViewCards currentCards={this.state.cards}/>;
+                return <ViewCards activeCard={this.state.activeCard} currentCards={this.state.cards} deleteCard={this.deleteCard} setActiveCard={this.setActiveCard}/>;
             default:
                 return null;
+        }
+    }
+
+    getCards() {
+        const cards = localStorage.getItem('flashCards');
+
+        if(cards) {
+            this.setState({
+                cards: JSON.parse(cards)
+            });
         }
     }
 
@@ -52,6 +83,7 @@ class App extends React.Component{
     }
 
     addCard(cardObject){
+        console.log(cardObject);
       
         const cardsArray = this.state.cards.slice();
         cardsArray.push(cardObject);
