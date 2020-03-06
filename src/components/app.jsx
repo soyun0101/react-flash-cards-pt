@@ -81,13 +81,12 @@ class App extends React.Component{
     saveCards(){
         
         const stringedCards = JSON.stringify(this.state.cards);
-        console.log(stringedCards);
+      
         const storeCards = window.localStorage;
         storeCards.setItem('flashCards', stringedCards);
     }
 
     addCard(cardObject){
-        console.log(cardObject);
       
         const cardsArray = this.state.cards.slice();
         cardsArray.push(cardObject);
