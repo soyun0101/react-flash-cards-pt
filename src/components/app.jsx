@@ -43,9 +43,11 @@ class App extends React.Component{
            
             let newCardsArray = this.state.cards.slice();
             newCardsArray.splice(card.index, 1);
+            
             this.setState({
                 cards: newCardsArray
-            });
+            }, this.saveCards);
+
         }
         
     }
@@ -77,7 +79,9 @@ class App extends React.Component{
     }
 
     saveCards(){
+        
         const stringedCards = JSON.stringify(this.state.cards);
+        console.log(stringedCards);
         const storeCards = window.localStorage;
         storeCards.setItem('flashCards', stringedCards);
     }
